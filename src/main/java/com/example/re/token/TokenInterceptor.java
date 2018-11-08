@@ -1,5 +1,6 @@
 package com.example.re.token;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -8,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
-/**
- * 拦截API请求
- */
+@Deprecated
 public class TokenInterceptor implements HandlerInterceptor {
 
     @Override

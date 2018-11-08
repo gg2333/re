@@ -1,4 +1,4 @@
-package com.example.re.conf;
+package com.example.re.token;
 
 import com.example.re.token.CheckInterceptor;
 import com.example.re.token.TokenInterceptor;
@@ -7,8 +7,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-@Configuration
-public class HttpConf extends WebMvcConfigurationSupport {
+//@Configuration
+@Deprecated
+public class TokenConf extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {

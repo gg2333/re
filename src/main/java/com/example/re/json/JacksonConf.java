@@ -1,4 +1,4 @@
-package com.example.re.conf;
+package com.example.re.json;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
@@ -9,7 +9,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
 
-@Configuration
+//@Configuration
 public class JacksonConf {
 
     public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
