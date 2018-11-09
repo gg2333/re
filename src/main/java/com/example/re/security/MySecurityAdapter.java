@@ -70,6 +70,8 @@ public class MySecurityAdapter extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(new AuthAuthenticationFilter(), LogoutFilter.class);
 
+        // http.addFilterBefore(new LoginAuthenticationFilter(), LogoutFilter.class);
+
 //        http.addFilter(new TokenAuthenticationFilter(authenticationManager()));
         http.addFilterBefore(new TokenAuthenticationFilter(authenticationManager()), LogoutFilter.class);
 
