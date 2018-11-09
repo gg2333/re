@@ -19,9 +19,6 @@ import org.springframework.security.web.authentication.logout.LogoutFilter;
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class MySecurityAdapter extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private CaptchaAuthenticationProvider captchaAuthenticationProvider;
-
     @Autowired
     private TokenAuthenticationProvider tokenAuthenticationProvider;
 
@@ -29,14 +26,6 @@ public class MySecurityAdapter extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-//    @Override
-//    protected AuthenticationManager authenticationManager() throws Exception {
-//        //return super.authenticationManager();
-//
-//        List<AuthenticationProvider> providers = Collections.singletonList(new JwtTokenProvider());
-//        return new ProviderManager(providers);
-//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -53,7 +42,6 @@ public class MySecurityAdapter extends WebSecurityConfigurerAdapter {
 //                .passwordEncoder(passwordEncoder());
 
         /* 自定义身份验证 */
-//        auth.authenticationProvider(captchaAuthenticationProvider);
         auth.authenticationProvider(tokenAuthenticationProvider);
 
     }
@@ -80,12 +68,9 @@ public class MySecurityAdapter extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated();
 
+        http.addFilterBefore(new AuthAuthenticationFilter(), LogoutFilter.class);
 
-//        CaptchaAuthenticationFilter captchaAuthenticationFilter = new CaptchaAuthenticationFilter();
-//        captchaAuthenticationFilter.setAuthenticationManager(authenticationManager());
-//        http.addFilterBefore(captchaAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
-        //http.addFilter(new TokenAuthenticationFilter(authenticationManager()));
+//        http.addFilter(new TokenAuthenticationFilter(authenticationManager()));
         http.addFilterBefore(new TokenAuthenticationFilter(authenticationManager()), LogoutFilter.class);
 
     }

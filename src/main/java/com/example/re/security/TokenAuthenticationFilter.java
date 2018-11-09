@@ -55,7 +55,7 @@ public class TokenAuthenticationFilter extends BasicAuthenticationFilter {
 
         /* save authentication */
         try {
-            Authentication authRequest =
+            TokenAuthenticationToken authRequest =
                     new TokenAuthenticationToken("admin", "123456", authorities);
 
             Authentication authResult = this.getAuthenticationManager()

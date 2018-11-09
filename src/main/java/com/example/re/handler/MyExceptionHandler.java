@@ -13,9 +13,16 @@ public class MyExceptionHandler {
 
     private static final Logger log = LoggerFactory.getLogger(MyExceptionHandler.class);
 
+    @ExceptionHandler(value = AuthException.class)
+    @ResponseStatus(HttpStatus.OK)
+    public BaseResp authException(AuthException e) {
+        return BaseResp.error();
+    }
+
+
     @ExceptionHandler(value = MyException.class)
     @ResponseStatus(HttpStatus.OK)
-    public BaseResp demoException(MyException e) {
+    public BaseResp myException(MyException e) {
         return BaseResp.error(e.getCode(), e.getMessage());
     }
 

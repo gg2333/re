@@ -24,4 +24,9 @@ public class UserController {
         return Mono.just(BaseResp.success());
     }
 
+    @GetMapping(path = "/test")
+    public Mono<BaseResp<String>> test() {
+        return Mono.just(BaseResp.success());
+    }
+
 }
